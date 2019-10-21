@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">EasyChecker</string>
+    <string name="empty">is empty!</string>
+    <string name="invalid">is invalid!</string>
+    <string name="confirm_password_not_match">
+        Confirm password doesn\'t match with password!
+    </string>
+</resources>

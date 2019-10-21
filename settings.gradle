@@ -1,0 +1,2 @@
+include ':app', ':easychecker'
+rootProject.name='Easy-Checker'
