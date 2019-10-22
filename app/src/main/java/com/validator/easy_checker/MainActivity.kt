@@ -15,28 +15,32 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        try {
-            EasyChecker.validateInput(
-                this,
-                2,
-                first,
-                second,
-                third,
-                fourth
-            )
-        } catch (developerErrorException: DeveloperErrorException) {
-            Toast.makeText(
-                this,
-                developerErrorException.message,
-                Toast.LENGTH_LONG
-            ).show()
-        } catch (inputErrorException: InputErrorException) {
-            Toast.makeText(
-                this,
-                inputErrorException.message,
-                Toast.LENGTH_LONG
-            ).show()
+        btn_test.setOnClickListener {
+            try {
+                EasyChecker.validateInput(
+                    this,
+                    2,
+                    first,
+                    second,
+                    third,
+                    fourth
+                )
+            } catch (developerErrorException: DeveloperErrorException) {
+                Toast.makeText(
+                    this,
+                    developerErrorException.message,
+                    Toast.LENGTH_LONG
+                ).show()
+            } catch (inputErrorException: InputErrorException) {
+                Toast.makeText(
+                    this,
+                    inputErrorException.message,
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+
         }
+
 
     }
 }
