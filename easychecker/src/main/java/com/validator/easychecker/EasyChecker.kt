@@ -33,7 +33,6 @@ class EasyChecker {
                                     context.resources.getString(R.string.empty)
                         )
                         break
-
                     } else {
                         //check if email is valid
                         if (inputFields[x].tag.toString().contains("Email")) {
@@ -97,7 +96,7 @@ class EasyChecker {
                     throw DeveloperErrorException(
                         String.format(
                             context.getString(R.string.missing_tag),
-                            x + 1, Util.getNumberSuffix(x+1)
+                            x + 1, Util.getNumberSuffix(x + 1)
                         )
                     )
                     break
@@ -105,5 +104,32 @@ class EasyChecker {
             }
             return count == inputFields.size
         }
+    }
+
+    fun checkIfTagNotNull(
+        inputField: EditText,
+        context: Context
+    ): Boolean {
+        return inputField.tag != null
+    }
+
+    fun checkEmail(): Boolean {
+
+    }
+
+    fun checkInputField(): Boolean {
+
+    }
+
+    fun checkPhone(): Boolean {
+
+    }
+
+    fun checkPassword(): Boolean {
+
+    }
+
+    fun checkConfirmPassword(): Boolean {
+
     }
 }
