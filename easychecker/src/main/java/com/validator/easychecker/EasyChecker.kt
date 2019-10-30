@@ -26,84 +26,164 @@ class EasyChecker {
             var count = 0
             var isHaveConfirmPassword = false
             for (x in inputFields.indices) {
-                if (inputFields[x].tag != null) {
-                    if (inputFields[x].text.toString().isEmpty()) {
-                        throw InputErrorException(
-                            inputFields[x].tag.toString() + " " +
-                                    context.resources.getString(R.string.empty)
+                if (checkIfTagNotNull(context, *inputFields)) {
+                    if (checkInputField(
+                            inputFields[x],
+                            context
                         )
-                        break
-
-                    } else {
-                        //check if email is valid
-                        if (inputFields[x].tag.toString().contains("Email")) {
-                            if (Patterns.EMAIL_ADDRESS.matcher(inputFields[x].text.toString().trim())
-                                    .matches()
+                    ) {
+                        if (checkIfEmailExist(inputFields[x])) {
+                            if (checkEmail(
+                                    inputFields[x],
+                                    context
+                                )
                             ) {
                                 count++
                             } else {
-                                throw InputErrorException(
-                                    inputFields[x].tag.toString() + " " +
-                                            context.resources.getString(R.string.invalid)
-                                )
-                                break
-                            }
-                        } else if (inputFields[x].tag.toString().contains("Phone")) {
-                            if (Patterns.PHONE.matcher(inputFields[x].text.toString().trim()).matches()) {
-                                count++
-                            } else {
-                                throw InputErrorException(
-                                    inputFields[x].tag.toString() + " " +
-                                            context.resources.getString(R.string.invalid)
-                                )
                                 break
                             }
                         } else {
-                            //check if the password and confirm password is same
-                            if (inputFields[x].tag.toString() == "Password") {
-                                if (inputFields[x].text.length >= passLength) {
-                                    for (y in inputFields.indices) {
-                                        if (inputFields[y].tag.toString().contains("Confirm")) {
-                                            isHaveConfirmPassword = true
-                                            if (inputFields[y].text.toString() !=
-                                                inputFields[x].text.toString()
-                                            ) {
-                                                throw InputErrorException(
-                                                    context.getString(R.string.confirm_password_not_match)
-                                                )
-                                                break
-                                            } else {
-                                                count++
-                                            }
-                                        }
-                                    }
-                                    if (!isHaveConfirmPassword) {
-                                        count++
-                                    }
-                                } else {
-                                    throw InputErrorException(
-                                        String.format(
-                                            context.getString(R.string.password_length_error),
-                                            passLength
-                                        )
+                            //check phone
+                            if (checkIfPhoneExist(inputFields[x])) {
+                                if (checkPhone(
+                                        inputFields[x],
+                                        context
                                     )
+                                ) {
+                                    count++
+                                } else {
+                                    break
                                 }
                             } else {
-                                count++
+                                //check password section
+                                //check if the password and confirm password is same
+                                if (inputFields[x].tag.toString() == "Password") {
+                                    if (inputFields[x].text.length >= passLength) {
+                                        for (y in inputFields.indices) {
+                                            if (inputFields[y].tag.toString().contains("Confirm")) {
+                                                isHaveConfirmPassword = true
+                                                if (inputFields[y].text.toString() !=
+                                                    inputFields[x].text.toString()
+                                                ) {
+                                                    throw InputErrorException(
+                                                        context.getString(R.string.confirm_password_not_match)
+                                                    )
+                                                    break
+                                                } else {
+                                                    count++
+                                                }
+                                            }
+                                        }
+                                        if (!isHaveConfirmPassword) {
+                                            count++
+                                        }
+                                    } else {
+                                        throw InputErrorException(
+                                            String.format(
+                                                context.getString(R.string.password_length_error),
+                                                passLength
+                                            )
+                                        )
+                                    }
+                                } else {
+                                    count++
+                                }
                             }
                         }
+
+                    } else {
+                        break
                     }
                 } else {
-                    throw DeveloperErrorException(
-                        String.format(
-                            context.getString(R.string.missing_tag),
-                            x + 1, Util.getNumberSuffix(x+1)
-                        )
-                    )
                     break
                 }
             }
             return count == inputFields.size
         }
+
+        private fun checkIfTagNotNull(
+            context: Context,
+            vararg inputField: EditText
+        ): Boolean {
+            var count = 0
+            for (x in inputField.indices) {
+                if (inputField[x].tag != null &&
+                    inputField[x].tag.toString().isNotEmpty()
+                ) {
+                    count++
+                } else {
+                    throw DeveloperErrorException(
+                        String.format(
+                            context.getString(R.string.missing_tag),
+                            x + 1, Util.getNumberSuffix(x + 1)
+                        )
+                    )
+                    break
+                }
+            }
+            return inputField.size == count
+        }
+
+        private fun checkIfEmailExist(inputField: EditText): Boolean {
+            return inputField.tag.toString().contains("Email")
+        }
+
+        private fun checkIfPhoneExist(inputField: EditText): Boolean {
+            return inputField.tag.toString().contains("Phone")
+        }
+
+        private fun checkEmail(
+            inputField: EditText,
+            context: Context
+        ): Boolean {
+            //check if email is valid
+            return if (Patterns.EMAIL_ADDRESS.matcher(inputField.text.toString().trim())
+                    .matches()
+            ) {
+                true
+            } else {
+                throw InputErrorException(
+                    inputField.tag.toString() + " " +
+                            context.resources.getString(R.string.invalid)
+                )
+                false
+            }
+        }
+
+        private fun checkInputField(
+            inputField: EditText,
+            context: Context
+        ): Boolean {
+            return if (inputField.text.toString().isEmpty()) {
+                throw InputErrorException(
+                    inputField.tag.toString() + " " +
+                            context.resources.getString(R.string.empty)
+                )
+                false
+            } else {
+                true
+            }
+        }
+
+        private fun checkPhone(
+            inputField: EditText,
+            context: Context
+        ): Boolean {
+            //check if email is valid
+            return if (Patterns.PHONE.matcher(inputField.text.toString().trim())
+                    .matches()
+            ) {
+                true
+            } else {
+                throw InputErrorException(
+                    inputField.tag.toString() + " " +
+                            context.resources.getString(R.string.invalid)
+                )
+                false
+            }
+        }
+
     }
+
+
 }

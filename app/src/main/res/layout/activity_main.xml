@@ -9,39 +9,48 @@
 
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:tag="first"
         android:id="@+id/first"
-        >
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:tag="Name">
 
     </EditText>
 
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/second"
-        >
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:tag="">
 
     </EditText>
 
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/third"
-        >
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:tag="">
 
     </EditText>
 
 
     <EditText
+        android:id="@+id/fourth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/fourth"
-        >
+        android:hint="Confirm Password"
+        android:tag="Confirm Password">
 
     </EditText>
+
+    <Button
+        android:id="@+id/btn_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test" />
 
 </LinearLayout>
