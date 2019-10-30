@@ -26,12 +26,10 @@ class MainActivity : AppCompatActivity() {
                     fourth
                 )
             } catch (developerErrorException: DeveloperErrorException) {
-                Toast.makeText(
-                    this,
-                    developerErrorException.message,
-                    Toast.LENGTH_LONG
-                ).show()
+                //best approach to print in log
+                developerErrorException.printStackTrace()
             } catch (inputErrorException: InputErrorException) {
+                //best approach is show this to user
                 Toast.makeText(
                     this,
                     inputErrorException.message,
@@ -42,5 +40,13 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    private fun saveData() {
+        Toast.makeText(
+            this,
+            "dataSaved",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }

@@ -107,7 +107,9 @@ class EasyChecker {
         ): Boolean {
             var count = 0
             for (x in inputField.indices) {
-                if (inputField[x].tag != null) {
+                if (inputField[x].tag != null &&
+                    inputField[x].tag.toString().isNotEmpty()
+                ) {
                     count++
                 } else {
                     throw DeveloperErrorException(
@@ -181,13 +183,6 @@ class EasyChecker {
             }
         }
 
-        /*      private fun checkPassword(): Boolean {
-
-              }
-
-              private fun checkConfirmPassword(): Boolean {
-
-              }*/
     }
 
 
