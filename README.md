@@ -41,7 +41,7 @@ add this dependency in your app level build.gradle file
 ```
 
 ### How to use?
-The main class is EasyChecker it's a singleton class that have a only one public function, validateInput()
+The main class is EasyChecker it's a singleton class that have a only one public function, validateInput(), It's super simple process, add tags in your input field, call the function with the possible parameters!
 
 ##### Please add  android:tag="your field name" to every input-fields (EditText or TextView), It's super easy, This library will use the tags to throw the actual error message, like "Name can't be empty" or "Email is invalid"!
 
@@ -66,14 +66,16 @@ The main class is EasyChecker it's a singleton class that have a only one public
 
 ### Parameters 
 - Context 
-- Password length that you wants (Integer)
+- Password length that you wants (Integer, Range 4 to 24 as deafult)
+- Password Pattern for validating password with Regex, I have wrote a custom class with some regular patterns, see below Password Pattern section, If you don't want to use Password Pattern then pass null or PasswordPattern.PASSWORD_PATTERN_NONE
 - Input fields or TextFields (EditText, TextView) [Pass as much you have one by one It's varargs]
 
 ```java
       try {
               var isValidationSuccess = EasyChecker.validateInput(
                     MainActivity.this,
-                    2,
+                    8,
+                    PasswordPattern.PASSWORD_PATTERN_NONE,
                     firstNameEditText,
                     lastNameEditText,
                     emailEditText,
@@ -109,6 +111,14 @@ There are two types of exceptions one is DeveloperException and another is Input
 - DeveloperException: Basically this exception is thrown if the developer did any error during implementation of this library like not adding "Tag" in input field or Text field or Giving wrong parameters or else
 
 - InputErrorException: This exception is the main validation error done by user, you can get the actual message from the exception and show it to user, Like if one user didn't put the email field then he would get something like : "Email field can't be empty!" or what ever you like
+
+### Password Patterns
+I have worte a class with some popular password pattern Regex, Here are the Constants:
+- PasswordPattern.PASSWORD_PATTERN_NONE = Use this if you don't wants to use Regex for password validation
+- PasswordPattern.PASSWORD_PATTERN_ONE = Minimum eight characters, at least one letter and one number
+- PasswordPattern.PASSWORD_PATTERN_TWO = Minimum eight characters, at least one letter, one number and one special character
+- PasswordPattern.PASSWORD_PATTERN_THREE = Minimum eight characters, at least one uppercase letter, one lowercase letter and one number
+- PasswordPattern.PASSWORD_PATTERN_THREE = Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character
 
 ### Development
 
