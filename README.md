@@ -43,6 +43,25 @@ add this dependency in your app level build.gradle file
 ### How to use?
 The main class is EasyChecker it's a singleton class that have a only one public function, validateInput()
 
+##### Please add tags to every input-fields (EditText or TextView), It's super easy
+
+
+```xml
+   <EditText
+        android:id="@+id/firstEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:tag="Name"/>
+        
+        <EditText
+        android:id="@+id/fourthEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Confirm Password"
+        android:tag="Confirm Password">
+```
+
 ### Parameters 
 - Context 
 - Password length that you wants (Integer)
