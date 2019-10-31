@@ -58,9 +58,7 @@ The main class is EasyChecker it's a singleton class that have a only one public
                     emailEditText,
                     passwordEditText,
                     confrimPasswordEditText
-                ).addCustomPassword(EasyChecker.REGGX_PATTER_ONE)
-                .addCustomMessage("sdlfdjsfldsj")
-                .build()
+                )
                 /**you can either use the returned boolean or just do the implementaiton 
                 here as errors are only thrown in exception blocks
                 **/
@@ -83,6 +81,12 @@ The main class is EasyChecker it's a singleton class that have a only one public
                 ).show()
             }
 ```
+
+### Exceptions
+There are two types of exceptions one is DeveloperException and another is InputErrorException, Those exceptions are basically checked exceptions, so you must have to catch both the exceptions.
+- DeveloperException: Basically this exception is thrown if the developer did any error during implementation of this library like not adding "Tag" in input field or Text field or Giving wrong parameters or else
+
+- InputErrorException: This exception is the main validation error done by user, you can get the actual message from the exception and show it to user, Like if one user didn't put the email field then he would get something like : "Email field can't be empty!" or what ever you like
 ### Plugins
 
 Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
