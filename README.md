@@ -29,9 +29,9 @@ Easy-Checker provides maven based easy installation
 add this to your root build.gradle file 
 ```sh
  allprojects {
-		repositories {
-			maven { url 'https://jitpack.io' }
-		}
+	repositories {
+	maven { url 'https://jitpack.io' }
+	}
 	}
 ```
 ##### Step 2:
@@ -40,27 +40,29 @@ add this dependency in your app level build.gradle file
  implementation 'com.github.mkhan9047:Easy-Checker:1.0.1'
 ```
 
-Install the dependencies and devDependencies and start the server.
-
-```sh
-$ cd dillinger
-$ npm install -d
-$ node app
-```
-
-For production environments...
-
-```sh
-$ npm install --production
-$ NODE_ENV=production node app
-```
-
 ### How to use?
-
-
-
-
-
+```java
+      try {
+                EasyChecker.validateInput(
+                    this,
+                    2,
+                    firstEditText,
+                    secondEditText,
+                    thirdEditText,
+                    fourthEditText
+                )
+            } catch (developerErrorException: DeveloperErrorException) {
+                //best approach to print in log
+                developerErrorException.printStackTrace()
+            } catch (inputErrorException: InputErrorException) {
+                //best approach is show this to user
+                Toast.makeText(
+                    this,
+                    inputErrorException.message,
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+```
 ### Plugins
 
 Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
