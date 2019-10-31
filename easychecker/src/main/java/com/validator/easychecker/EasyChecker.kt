@@ -8,7 +8,7 @@ import com.validator.easychecker.exceptions.InputErrorException
 import com.validator.easychecker.util.Util
 
 class EasyChecker {
-    companion object {
+    companion object Get {
         /**
          *@author Al. Mujahid Khan
          * This method validate the input fields, check if the input field is empty and also check for the email
@@ -90,7 +90,6 @@ class EasyChecker {
                                 }
                             }
                         }
-
                     } else {
                         break
                     }

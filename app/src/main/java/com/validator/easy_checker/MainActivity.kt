@@ -15,15 +15,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btn_test.setOnClickListener {
+        btn_testEditText.setOnClickListener {
             try {
-                EasyChecker.validateInput(
+             var isValidationSuccess =  EasyChecker.validateInput(
                     this,
                     2,
-                    first,
-                    second,
-                    third,
-                    fourth
+                    firstEditText,
+                    secondEditText,
+                    thirdEditText,
+                    fourthEditText
                 )
             } catch (developerErrorException: DeveloperErrorException) {
                 //best approach to print in log
