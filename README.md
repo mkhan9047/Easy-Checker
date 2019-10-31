@@ -2,17 +2,23 @@
 
 [![](https://jitpack.io/v/mkhan9047/Easy-Checker.svg)](https://jitpack.io/#mkhan9047/Easy-Checker)
 [![](https://img.shields.io/badge/Stability-90%25-brightgreen)](https://img.shields.io/badge/Stability-90%25-brightgreen)
+[![](https://img.shields.io/badge/Algorithm%20Used-Brute%20Force-yellow)](https://img.shields.io/badge/Algorithm%20Used-Brute%20Force-yellow)
+[![](https://img.shields.io/badge/Used%20Language-Kotlin-lightgrey)](https://img.shields.io/badge/Used%20Language-Kotlin-lightgrey)
 
-Dillinger is a cloud-enabled, mobile-ready, offline-storage, AngularJS powered HTML5 Markdown editor.
 
-  - Type some Markdown on the left
-  - See HTML in the right
-  - Magic
+Easy-Checker is a very simple input validation library for Android written in Kotlin and easily accessable from Java code as well. You will get many validation way or library. But most of them are not so easy for this simple task, that's why most of time time we go for legacy if else chain to check all the input fields, and we all know how distrubing is that. 
+
+  - Empty input box(Edittext)
+  - Phone number validation
+  - Email validation
+  - Password validation
+  - Confirm Password Validation
+  - Custom Validator
 
 # New Features!
 
-  - Import a HTML file and watch it magically convert to Markdown
-  - Drag and drop images (requires your Dropbox account be linked)
+  - Varargs for easy input of input fields insted of array or list
+  - 
 
 
 You can also:
