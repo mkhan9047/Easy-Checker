@@ -41,9 +41,16 @@ add this dependency in your app level build.gradle file
 ```
 
 ### How to use?
+The main class is EasyChecker it's a singleton class that have a only one public function, validateInput()
+
+### Parameters 
+- Context 
+- Password length that you wants (Integer)
+- Input fields or TextFields (EditText, TextView) [Pass as much you have one by one It's varargs]
+
 ```java
       try {
-                EasyChecker.validateInput(
+              var isValidationSuccess = EasyChecker.validateInput(
                     this,
                     2,
                     firstEditText,
@@ -51,6 +58,8 @@ add this dependency in your app level build.gradle file
                     thirdEditText,
                     fourthEditText
                 )
+                //you can either use the returned boolean or just do the implementaiton here as errors are only thrown in exception blocks
+                saveData() or doSignIn() or doSignUp()
             } catch (developerErrorException: DeveloperErrorException) {
                 //best approach to print in log
                 developerErrorException.printStackTrace()
