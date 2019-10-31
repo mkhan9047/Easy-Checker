@@ -37,7 +37,7 @@ add this to your root build.gradle file
 ##### Step 2:
 add this dependency in your app level build.gradle file
 ```sh
- implementation 'com.github.mkhan9047:Easy-Checker:1.0.1'
+implementation 'com.github.mkhan9047:Easy-Checker:1.0.2'
 ```
 
 ### How to use?
