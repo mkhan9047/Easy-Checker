@@ -51,15 +51,23 @@ The main class is EasyChecker it's a singleton class that have a only one public
 ```java
       try {
               var isValidationSuccess = EasyChecker.validateInput(
-                    this,
+                    MainActivity.this,
                     2,
                     firstEditText,
                     secondEditText,
                     thirdEditText,
                     fourthEditText
                 )
-                //you can either use the returned boolean or just do the implementaiton here as errors are only thrown in exception blocks
+                /**you can either use the returned boolean or just do the implementaiton 
+                here as errors are only thrown in exception blocks
+                **/
                 saveData() or doSignIn() or doSignUp()
+                //or
+                if(doSignIn){
+                    //if validated
+                }else{
+                    //if not validated
+                }
             } catch (developerErrorException: DeveloperErrorException) {
                 //best approach to print in log
                 developerErrorException.printStackTrace()
