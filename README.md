@@ -43,7 +43,9 @@ add this dependency in your app level build.gradle file
 ### How to use?
 The main class is EasyChecker it's a singleton class that have a only one public function, validateInput()
 
-##### Please add tags to every input-fields (EditText or TextView), It's super easy
+##### Please add  android:tag="your field name" to every input-fields (EditText or TextView), It's super easy, This library will use the tags to throw the actual error message, like "Name can't be empty" or "Email is invalid"!
+
+###### Hint: Constant tags are "Password", "Phone", "Email", "Confirm Password" if you have those fields, don't miss this tags and also don't change tag message, for tohers fileds, you can use whatever you wants!
 
 
 ```xml
