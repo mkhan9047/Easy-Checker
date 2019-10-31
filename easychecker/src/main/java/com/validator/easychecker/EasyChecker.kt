@@ -3,12 +3,17 @@ package com.validator.easychecker
 import android.content.Context
 import android.util.Patterns
 import android.widget.EditText
+import androidx.annotation.IntRange
 import com.validator.easychecker.exceptions.DeveloperErrorException
 import com.validator.easychecker.exceptions.InputErrorException
 import com.validator.easychecker.util.Util
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 class EasyChecker {
-    companion object Get {
+
+    companion object Instance {
+        private var PASSWORD_REGX: String? = null
         /**
          *@author Al. Mujahid Khan
          * This method validate the input fields, check if the input field is empty and also check for the email
@@ -20,9 +25,12 @@ class EasyChecker {
         )
         fun validateInput(
             context: Context,
+            @IntRange(from = 4, to = 24)
             passLength: Int,
+            passwordRegx: String?,
             vararg inputFields: EditText
         ): Boolean {
+            PASSWORD_REGX = passwordRegx
             var count = 0
             var isHaveConfirmPassword = false
             for (x in inputFields.indices) {
@@ -59,25 +67,35 @@ class EasyChecker {
                                 //check if the password and confirm password is same
                                 if (inputFields[x].tag.toString() == "Password") {
                                     if (inputFields[x].text.length >= passLength) {
-                                        for (y in inputFields.indices) {
-                                            if (inputFields[y].tag.toString().contains("Confirm")) {
-                                                isHaveConfirmPassword = true
-                                                if (inputFields[y].text.toString() !=
-                                                    inputFields[x].text.toString()
-                                                ) {
-                                                    throw InputErrorException(
-                                                        context.getString(R.string.confirm_password_not_match)
-                                                    )
-                                                    break
-                                                } else {
-                                                    count++
+                                        if (isValidPassword(inputFields[x].text.toString())) {
+                                            for (y in inputFields.indices) {
+                                                if (inputFields[y].tag.toString().contains("Confirm")) {
+                                                    isHaveConfirmPassword = true
+                                                    if (inputFields[y].text.toString() !=
+                                                        inputFields[x].text.toString()
+                                                    ) {
+                                                        throw InputErrorException(
+                                                            context.getString(R.string.confirm_password_not_match)
+                                                        )
+                                                        break
+                                                    } else {
+                                                        count++
+                                                    }
                                                 }
                                             }
-                                        }
-                                        if (!isHaveConfirmPassword) {
-                                            count++
+                                            if (!isHaveConfirmPassword) {
+                                                count++
+                                            }
+                                        } else {
+                                            throw InputErrorException(
+                                                String.format(
+                                                    context.getString(R.string.password_error),
+                                                    passLength
+                                                )
+                                            )
                                         }
                                     } else {
+                                        //invalid password
                                         throw InputErrorException(
                                             String.format(
                                                 context.getString(R.string.password_length_error),
@@ -159,6 +177,18 @@ class EasyChecker {
                             context.resources.getString(R.string.empty)
                 )
                 false
+            } else {
+                true
+            }
+        }
+
+        private fun isValidPassword(password: String): Boolean {
+            val pattern: Pattern
+            val matcher: Matcher
+            return if (PASSWORD_REGX != null) {
+                pattern = Pattern.compile(PASSWORD_REGX)
+                matcher = pattern.matcher(password)
+                return matcher.matches()
             } else {
                 true
             }
