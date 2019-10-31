@@ -7,4 +7,5 @@
     </string>
     <string name="missing_tag">%d%s Editext is missing tag!</string>
     <string name="password_length_error">Password can\'t be less than %d</string>
+    <string name="password_error">Password is not valid!</string>
 </resources>

@@ -9,7 +9,7 @@
 
 
     <EditText
-        android:id="@+id/first"
+        android:id="@+id/firstEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Name"
@@ -19,27 +19,27 @@
 
 
     <EditText
-        android:id="@+id/second"
+        android:id="@+id/secondEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email"
-        android:tag="">
+        android:tag="Email">
 
     </EditText>
 
 
     <EditText
-        android:id="@+id/third"
+        android:id="@+id/thirdEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
-        android:tag="">
+        android:tag="Password">
 
     </EditText>
 
 
     <EditText
-        android:id="@+id/fourth"
+        android:id="@+id/fourthEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Confirm Password"
@@ -48,7 +48,7 @@
     </EditText>
 
     <Button
-        android:id="@+id/btn_test"
+        android:id="@+id/btn_testEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Test" />

@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.validator.easychecker.EasyChecker
 import com.validator.easychecker.exceptions.DeveloperErrorException
 import com.validator.easychecker.exceptions.InputErrorException
+import com.validator.easychecker.util.PasswordPattern
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -15,16 +16,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btn_test.setOnClickListener {
+        btn_testEditText.setOnClickListener {
             try {
-                EasyChecker.validateInput(
+                var isValidationSuccess = EasyChecker.validateInput(
                     this,
-                    2,
-                    first,
-                    second,
-                    third,
-                    fourth
+                    8,
+                    PasswordPattern.PASSWORD_PATTERN_NONE,
+                    firstEditText,
+                    secondEditText,
+                    thirdEditText,
+                    fourthEditText
                 )
+                saveData()
             } catch (developerErrorException: DeveloperErrorException) {
                 //best approach to print in log
                 developerErrorException.printStackTrace()
