@@ -53,11 +53,14 @@ The main class is EasyChecker it's a singleton class that have a only one public
               var isValidationSuccess = EasyChecker.validateInput(
                     MainActivity.this,
                     2,
-                    firstEditText,
-                    secondEditText,
-                    thirdEditText,
-                    fourthEditText
-                )
+                    firstNameEditText,
+                    lastNameEditText,
+                    emailEditText,
+                    passwordEditText,
+                    confrimPasswordEditText
+                ).addCustomPassword(EasyChecker.REGGX_PATTER_ONE)
+                .addCustomMessage("sdlfdjsfldsj")
+                .build()
                 /**you can either use the returned boolean or just do the implementaiton 
                 here as errors are only thrown in exception blocks
                 **/
