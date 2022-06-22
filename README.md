@@ -4,6 +4,8 @@
 [![](https://img.shields.io/badge/Stability-90%25-brightgreen)](https://img.shields.io/badge/Stability-90%25-brightgreen)
 [![](https://img.shields.io/badge/Algorithm%20Used-Brute%20Force-yellow)](https://img.shields.io/badge/Algorithm%20Used-Brute%20Force-yellow)
 [![](https://img.shields.io/badge/Used%20Language-Kotlin-lightgrey)](https://img.shields.io/badge/Used%20Language-Kotlin-lightgrey)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Easy%20Checker-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/8392)
+
 
 
 Easy-Checker is a very simple input validation library for Android written in Kotlin and easily accessable from Java code as well. You will get many validation way or library. But most of them are not so easy for this simple task, that's why most of time time we go for legacy if else chain to check all the input fields, and we all know how distrubing is that. 
