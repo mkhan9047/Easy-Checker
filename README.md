@@ -4,7 +4,7 @@
 [![](https://img.shields.io/badge/Stability-90%25-brightgreen)](https://img.shields.io/badge/Stability-90%25-brightgreen)
 [![](https://img.shields.io/badge/Algorithm%20Used-Brute%20Force-yellow)](https://img.shields.io/badge/Algorithm%20Used-Brute%20Force-yellow)
 [![](https://img.shields.io/badge/Used%20Language-Kotlin-lightgrey)](https://img.shields.io/badge/Used%20Language-Kotlin-lightgrey)
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Easy%20Checker-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/8392)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Easy%20Checker-red.svg?style=flat)](https://android-arsenal.com/details/1/8392)
 
 
 
